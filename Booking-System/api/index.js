@@ -5,7 +5,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const imageDownloader = require("image-downloader");
+const Place = require("./model/Place");
+const multer = require("multer");
 require("dotenv").config();
+const fs = require("fs");
 
 const app = express();
 
@@ -15,6 +19,7 @@ const jwtSecret = "dfeeflnedfdmfejhvklfmdsf";
 //parses the json -  This solves the JSON error in console log
 app.use(express.json());
 app.use(cookieParser());
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 //NPM I CORS fixed the issue with not recognising url error.
 //Used yarn add CORS previously. Can set wild card * for allowing all origin but unsafe!
@@ -89,5 +94,67 @@ app.get("/profile", (request, response) => {
 app.post("/logout", (request, response) => {
   response.cookie("token", "").json(true);
 });
+
+//console.log({ __dirname });
+app.post("/upload-by-link", async (request, response) => {
+  const { link } = request.body;
+  const newName = "photo" + Date.now() + ".jpg";
+  await imageDownloader.image({
+    url: link,
+    dest: __dirname + "/uploads/" + newName,
+  });
+  response.json(newName);
+});
+
+const photosMiddleware = multer({ dest: "uploads/" });
+app.post(
+  "/upload",
+  photosMiddleware.array("photos", 100),
+  (request, response) => {
+    const uploadedFiles = [];
+    for (let i = 0; i < request.files.length; i++) {
+      const { path, originalname } = request.files[i];
+      const parts = originalname.split(".");
+      const ext = parts[parts.length - 1];
+      const newPath = path + "." + ext;
+      fs.renameSync(path, newPath);
+      uploadedFiles.push(newPath.replace("uploads/", ""));
+    }
+
+    response.json(uploadedFiles);
+  }
+);
+
+app.post("/places"),
+  (request, response) => {
+    const { token } = request.cookies;
+    const {
+      title,
+      address,
+      addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+    } = request.body;
+    jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
+      if (error) throw error;
+      const placeDoc = await Place.create({
+        owner: tokenData.id,
+        title,
+        address,
+        addedPhotos,
+        description,
+        perks,
+        extraInfo,
+        checkIn,
+        checkOut,
+        maxGuests,
+      });
+      response.json(placeDoc);
+    });
+  };
 
 app.listen(4000);
