@@ -2,8 +2,7 @@ import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
 import { Navigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import PlacesPage from "./PlacesPages";
+import PlacesPage from "./PlacesPage";
 import axios from "axios";
 import AccountNav from "../AccountNav";
 

@@ -1,7 +1,9 @@
 import Perks from "../Perks";
 import PhotosUploader from "../PhotosUploader";
 import { useState } from "react";
+import axios from "axios";
 import AccountNav from "../AccountNav";
+import { Navigate } from "react-router";
 
 export default function PlacesFormPage() {
   const [title, setTitle] = useState("");
@@ -13,6 +15,7 @@ export default function PlacesFormPage() {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [maxGuests, setMaxGuests] = useState(1);
+  const [redirect, setRedirect] = useState("");
 
   function inputHeader(text) {
     return <h2 className="text-lg mt4">{text}</h2>;
@@ -32,17 +35,26 @@ export default function PlacesFormPage() {
 
   async function addNewPlace(event) {
     event.preventDefault();
-    await axios.post("/places", {
-      title,
-      address,
-      addedPhotos,
-      description,
-      perks,
-      extraInfo,
-      checkIn,
-      checkOut,
-      maxGuests,
-    });
+    try {
+      await axios.post("/places", {
+        title,
+        address,
+        addedPhotos,
+        description,
+        perks,
+        extraInfo,
+        checkIn,
+        checkOut,
+        maxGuests,
+      });
+      setRedirect(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  if (redirect) {
+    return <Navigate to={"/account/places"} />;
   }
   return (
     <div>
@@ -66,6 +78,7 @@ export default function PlacesFormPage() {
 
         {preInput("Photos", "More photos")}
         <PhotosUploader addedPhotos={addedPhotos} onChange={setAddedPhotos} />
+
         {preInput("Description", "Description of the place")}
         <textarea
           value={description}

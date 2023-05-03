@@ -1,18 +1,24 @@
 import { Link } from "react-router-dom";
-//import Perks from "../Perks";
-import { useParams } from "react-router-dom";
-//import PhotosUploader from "../PhotosUploader";
-//import { useState } from "react";
-import { Navigate } from "react-router-dom";
-//import axios from "axios";
-//import PlacesFormPage from "./PlacesFormPage";
 import AccountNav from "../AccountNav";
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
+
 
 export default function PlacesPage() {
+  const [places, setPlaces] = useState([]);
+  useEffect(() => {
+    axios.get("/places").then(({ data }) => {
+      setPlaces(data);
+    });
+  }, []);
+
   return (
     <div>
       <AccountNav />
       <div className="text-center">
+        list of all added places
+        <br />
         <Link
           className="inline-flex gap-1 bg-primary text-white py-2 px-6 rounded-full"
           to={"/account/places/new"}
@@ -33,6 +39,12 @@ export default function PlacesPage() {
           </svg>
           Add new place
         </Link>
+      </div>
+      <div className="mt-4">
+        {places.length > 0 &&
+          places.map((place) => (
+            <div className="bg-gray-200 p-4 rounded-2xl">{place.title}</div>
+          ))}
       </div>
     </div>
   );
