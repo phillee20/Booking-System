@@ -1,12 +1,12 @@
 const cors = require("cors");
 const express = require("express");
 const User = require("./model/User");
+const Place = require("./model/Place");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const imageDownloader = require("image-downloader");
-const Place = require("./model/Place");
 const multer = require("multer");
 require("dotenv").config();
 const fs = require("fs");
@@ -127,11 +127,13 @@ app.post(
 
 app.post("/places"),
   (request, response) => {
+    console.log(request.token, "TOKEN");
     const { token } = request.cookies;
+    console.log(request.body);
     const {
       title,
       address,
-      addedPhotos,
+      photos: addedPhotos,
       description,
       perks,
       extraInfo,
@@ -139,6 +141,7 @@ app.post("/places"),
       checkOut,
       maxGuests,
     } = request.body;
+
     jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
       if (error) throw error;
       const placeDoc = await Place.create({
@@ -156,5 +159,14 @@ app.post("/places"),
       response.json(placeDoc);
     });
   };
+
+app.get("/places", (request, response) => {
+  const { token } = request.cookies;
+
+  jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
+    const { id } = tokenData;
+    response.json(await Place.find({ owner: id }));
+  });
+});
 
 app.listen(4000);
