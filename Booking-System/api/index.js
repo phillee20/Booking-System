@@ -2,8 +2,8 @@ const cors = require("cors");
 const express = require("express");
 const Place = require("./model/Place");
 const User = require("./model/User");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const imageDownloader = require("image-downloader");
@@ -14,7 +14,7 @@ const fs = require("fs");
 const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
-const jwtSecret = "dfeeflnedfdmfejhvklfmdsf";
+const jwtSecret = "dfeeflnedfdmfejhvklfmdsff";
 
 //parses the json -  This solves the JSON error in console log
 app.use(express.json());
@@ -39,9 +39,9 @@ app.get("/test", (request, response) => {
   response.json("test ok here!");
 });
 
-// app.get("/places", (request, response) => {
-//   response.json("places ok here!");
-// });
+app.get("/places", (request, response) => {
+  response.json("places ok here!");
+});
 
 app.post("/register", async (request, response) => {
   const { name, email, password } = request.body;
@@ -129,51 +129,36 @@ app.post(
   }
 );
 
-app.post("/places"),
-  (request, response) => {
-    const { token } = request.cookies;
-    //console.log(request);
-    const {
+app.post("/places", (request, response) => {
+  const { token } = request.cookies;
+  console.log(token);
+  const {
+    title,
+    address,
+    addedPhotos,
+    description,
+    perks,
+    extraInfo,
+    checkIn,
+    checkOut,
+    maxGuests,
+  } = request.body;
+  jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
+    if (error) throw error;
+    const placeInfo = await Place.create({
+      owner: tokenData.id,
       title,
       address,
-      photos: addedPhotos,
+      addedPhotos,
       description,
       perks,
       extraInfo,
       checkIn,
       checkOut,
       maxGuests,
-    } = request.body;
-    jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
-      if (error) throw error;
-      const placeDocc = await Place.create({
-        owner: tokenData.id,
-        title,
-        address,
-        addedPhotos,
-        description,
-        perks,
-        extraInfo,
-        checkIn,
-        checkOut,
-        maxGuests,
-      });
-      console.log(placeDoc);
-      response.json(placeDocc);
     });
-  };
-
-app.get("/places", (request, response) => {
-  const { token } = request.cookies;
-  jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
-    const { id } = tokenData;
-    response.json(await Place.find({ owner: id }));
+    response.json(placeInfo);
   });
-});
-
-app.get("/places/:id", async (request, response) => {
-  const { id } = request.params;
-  response.json(await Place.findById(id));
 });
 
 app.listen(4000);
