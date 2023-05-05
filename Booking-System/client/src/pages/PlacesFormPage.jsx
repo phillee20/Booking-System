@@ -1,11 +1,14 @@
 import Perks from "../Perks";
 import PhotosUploader from "../PhotosUploader";
 import { useState } from "react";
-import axios from "axios";
 import AccountNav from "../AccountNav";
-import { Navigate } from "react-router";
+import { Navigate, useParams } from "react-router";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function PlacesFormPage() {
+  const { id } = useParams;
+  //console.log({ id });
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [addedPhotos, setAddedPhotos] = useState([]);
@@ -16,6 +19,25 @@ export default function PlacesFormPage() {
   const [checkOut, setCheckOut] = useState("");
   const [maxGuests, setMaxGuests] = useState(1);
   const [redirect, setRedirect] = useState("");
+
+  //Belows gets the single place
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+    axios.get("/places/" + id).then((response) => {
+      const { data } = response;
+      setTitle(data.title);
+      setAddress(data.address);
+      setAddedPhotos(data.photos);
+      setDescription(data.description);
+      setPerks(data.perks);
+      setExtraInfo(data.extraInfo);
+      setCheckIn(data.checkIn);
+      setCheckOut(data.checkOut);
+      setMaxGuests(data.maxGuests);
+    });
+  }, [id]);
 
   function inputHeader(text) {
     return <h2 className="text-lg mt4">{text}</h2>;
@@ -33,6 +55,36 @@ export default function PlacesFormPage() {
     );
   }
 
+  // fetch method
+  // async function addNewPlace(event) {
+  //   event.preventDefault();
+  //   try {
+  //     const response = await fetch("/places", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         title,
+  //         address,
+  //         addedPhotos,
+  //         description,
+  //         perks,
+  //         extraInfo,
+  //         checkIn,
+  //         checkOut,
+  //         maxGuests,
+  //       }),
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+  //     setRedirect(true);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
   async function addNewPlace(event) {
     event.preventDefault();
     try {
@@ -49,7 +101,8 @@ export default function PlacesFormPage() {
       });
       setRedirect(true);
     } catch (error) {
-      console.log(error);
+      console.log({ error });
+      return error;
     }
   }
 
