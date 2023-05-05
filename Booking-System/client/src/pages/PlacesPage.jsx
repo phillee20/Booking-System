@@ -7,12 +7,12 @@ import { useState } from "react";
 export default function PlacesPage() {
   const [places, setPlaces] = useState([]);
 
-  useEffect(() => {
-    axios.get("/places").then(({ data }) => {
-      console.log(data, "USE EFFECT");
-      setPlaces(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("/places").then(({ data }) => {
+  //     console.log(data, "USE EFFECT");
+  //     setPlaces(data);
+  //   });
+  // }, []);
 
   return (
     <div>
