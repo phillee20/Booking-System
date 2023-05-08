@@ -3,12 +3,12 @@ import { Route, Routes } from "react-router-dom";
 import IndexPage from "./pages/IndexPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import PlacesPage from "./pages/PlacesPage";
+import PlacesFormPage from "./pages/PlacesFormPage";
 import Layout from "./Layout";
 import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 import ProfilePage from "./pages/ProfilePage";
-import PlacesFormPage from "./pages/PlacesFormPage";
-import PlacesPage from "./pages/PlacesPage";
 
 //The URL below should match Network>Headers>SetCookie if setting cookie(Removes the exclamation mark)
 axios.defaults.baseURL = "http://localhost:4000"; //Acts as base for all axios requests

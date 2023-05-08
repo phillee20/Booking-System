@@ -2,8 +2,8 @@ const cors = require("cors");
 const express = require("express");
 const Place = require("./model/Place");
 const User = require("./model/User");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const imageDownloader = require("image-downloader");
@@ -14,7 +14,7 @@ const fs = require("fs");
 const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
-const jwtSecret = "dfeeflnedfdmfejhvklfmdsf";
+const jwtSecret = "dfeeflnedfdmfejhvklfmdsfff";
 
 //parses the json -  This solves the JSON error in console log
 app.use(express.json());
@@ -38,10 +38,6 @@ mongoose.connect(process.env.MONGO_URL);
 app.get("/test", (request, response) => {
   response.json("test ok here!");
 });
-
-// app.get("/places", (request, response) => {
-//   response.json("places ok here!");
-// });
 
 app.post("/register", async (request, response) => {
   const { name, email, password } = request.body;
@@ -83,7 +79,6 @@ app.post("/login", async (request, response) => {
 
 app.get("/profile", (request, response) => {
   const { token } = request.cookies;
-  //console.log(token, "TOKEN");
   if (token) {
     jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
       if (error) throw error;
@@ -129,11 +124,24 @@ app.post(
   }
 );
 
-app.post("/places"),
-  (request, response) => {
-    const { token } = request.cookies;
-    //console.log(request);
-    const {
+//Post a new place and create it with MongoDB place Schema
+app.post("/places", (request, response) => {
+  const { token } = request.cookies;
+  const {
+    title,
+    address,
+    addedPhotos,
+    description,
+    perks,
+    extraInfo,
+    checkIn,
+    checkOut,
+    maxGuests,
+  } = request.body;
+  jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
+    if (error) throw error;
+    const placeInfo = await Place.create({
+      owner: tokenData.id,
       title,
       address,
       photos: addedPhotos,
@@ -143,26 +151,13 @@ app.post("/places"),
       checkIn,
       checkOut,
       maxGuests,
-    } = request.body;
-    jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
-      if (error) throw error;
-      const placeDocc = await Place.create({
-        owner: tokenData.id,
-        title,
-        address,
-        addedPhotos,
-        description,
-        perks,
-        extraInfo,
-        checkIn,
-        checkOut,
-        maxGuests,
-      });
-      console.log(placeDoc);
-      response.json(placeDocc);
     });
-  };
+    //console.log(placeInfo);
+    response.json(placeInfo);
+  });
+});
 
+//Get all the saved places to show in My Accomodation page
 app.get("/places", (request, response) => {
   const { token } = request.cookies;
   jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
@@ -171,9 +166,48 @@ app.get("/places", (request, response) => {
   });
 });
 
+//Get each place id
 app.get("/places/:id", async (request, response) => {
   const { id } = request.params;
   response.json(await Place.findById(id));
+});
+
+//Update Saved location information
+app.put("/places", async (request, response) => {
+  const { token } = request.cookies;
+  const {
+    id,
+    title,
+    address,
+    addedPhotos,
+    description,
+    perks,
+    extraInfo,
+    checkIn,
+    checkOut,
+    maxGuests,
+  } = request.body;
+
+  jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
+    const placeDoc = await Place.findById(id);
+    if (tokenData.id === placeDoc.owner.toString()) {
+      // console.log(tokenData.id)
+      // console.log(placeDoc.owner)
+      placeDoc.set({
+        title,
+        address,
+        photos: addedPhotos,
+        description,
+        perks,
+        extraInfo,
+        checkIn,
+        checkOut,
+        maxGuests,
+      });
+      await placeDoc.save();
+      response.json("ok");
+    }
+  });
 });
 
 app.listen(4000);

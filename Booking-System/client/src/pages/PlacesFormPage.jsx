@@ -1,13 +1,14 @@
 import Perks from "../Perks";
+import axios from "axios";
 import PhotosUploader from "../PhotosUploader";
 import { useState } from "react";
 import AccountNav from "../AccountNav";
-import { Navigate, useParams } from "react-router";
+import { Navigate } from "react-router";
 import { useEffect } from "react";
-import axios from "axios";
+import { useParams } from "react-router";
 
 export default function PlacesFormPage() {
-  const { id } = useParams;
+  const { id } = useParams();
   //console.log({ id });
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
@@ -18,16 +19,16 @@ export default function PlacesFormPage() {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [maxGuests, setMaxGuests] = useState(1);
-  const [redirect, setRedirect] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
-  //Belows gets the single place
   useEffect(() => {
     if (!id) {
       return;
     }
-    axios.get("/places/" + id).then((response) => {
+    axios.get("places/" + id).then((response) => {
       const { data } = response;
-      setTitle(data.title);
+      //console.log(data);
+      setTitle(data, title);
       setAddress(data.address);
       setAddedPhotos(data.photos);
       setDescription(data.description);
@@ -55,54 +56,31 @@ export default function PlacesFormPage() {
     );
   }
 
-  // fetch method
-  // async function addNewPlace(event) {
-  //   event.preventDefault();
-  //   try {
-  //     const response = await fetch("/places", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         title,
-  //         address,
-  //         addedPhotos,
-  //         description,
-  //         perks,
-  //         extraInfo,
-  //         checkIn,
-  //         checkOut,
-  //         maxGuests,
-  //       }),
-  //     });
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-  //     setRedirect(true);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  async function addNewPlace(event) {
+  async function savePlace(event) {
     event.preventDefault();
-    try {
-      await axios.post("/places", {
-        title,
-        address,
-        addedPhotos,
-        description,
-        perks,
-        extraInfo,
-        checkIn,
-        checkOut,
-        maxGuests,
+    const placeData = {
+      //Make it DRY
+      title,
+      address,
+      addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+    };
+    if (id) {
+      //update
+      await axios.put("/places", {
+        id,
+        ...placeData,
       });
       setRedirect(true);
-    } catch (error) {
-      console.log({ error });
-      return error;
+    } else {
+      //new place
+      await axios.post("/places", { ...placeData });
+      setRedirect(true);
     }
   }
 
@@ -112,7 +90,7 @@ export default function PlacesFormPage() {
   return (
     <div>
       <AccountNav />
-      <form onSubmit={addNewPlace}>
+      <form onSubmit={savePlace}>
         {preInput("Title", "Title for your place")}
         <input
           type="text"
@@ -158,7 +136,7 @@ export default function PlacesFormPage() {
               type="text"
               value={checkIn}
               onChange={(event) => setCheckIn(event.target.value)}
-              placeholder="14:00"
+              placeholder="14"
             />
           </div>
           <div className="mt-2 -mb-2">
@@ -167,7 +145,7 @@ export default function PlacesFormPage() {
               type="text"
               value={checkOut}
               onChange={(event) => setCheckOut(event.target.value)}
-              placeholder="11:00"
+              placeholder="11"
             />
           </div>
           <div className="mt-2 -mb-2">
