@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 export default function AccountNav() {
+  // const location = useLocation();
+  // console.log(location);
   const { pathname } = useLocation();
   let subpage = pathname.split("/")?.[2];
+  //console.log({ subpage });
   if (subpage === undefined) {
+    //profile shows as undefined
     subpage = "profile";
   }
 
