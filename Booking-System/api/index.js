@@ -158,7 +158,7 @@ app.post("/places", (request, response) => {
 });
 
 //Get all the saved places to show in My Accomodation page
-app.get("/places", (request, response) => {
+app.get("/user-places", (request, response) => {
   const { token } = request.cookies;
   jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
     const { id } = tokenData;
@@ -208,6 +208,11 @@ app.put("/places", async (request, response) => {
       response.json("ok");
     }
   });
+});
+
+//Get all listings display on home page
+app.get("/places", async (request, response) => {
+  response.json(await Place.find());
 });
 
 app.listen(4000);
