@@ -1,5 +1,6 @@
 const cors = require("cors");
 const express = require("express");
+const Booking = require("./model/Booking");
 const Place = require("./model/Place");
 const User = require("./model/User");
 const jwt = require("jsonwebtoken");
@@ -218,6 +219,28 @@ app.put("/places", async (request, response) => {
 //Get all listings display on home page
 app.get("/places", async (request, response) => {
   response.json(await Place.find());
+});
+
+//Take in the below request and created the Schema for mongoDB
+app.post("/booking", (request, response) => {
+  const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
+    request.body;
+  Booking.create({
+    place,
+    checkIn,
+    checkOut,
+    numberOfGuests,
+    name,
+    phone,
+    price,
+  })
+    .then((error, doc) => {
+      if (error) throw error;
+      response.json(doc);
+    })
+    .catch((error) => {
+      throw error;
+    });
 });
 
 app.listen(4000);

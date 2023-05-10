@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import BookingWidget from "../Bookingwidget";
+import BookingWidgets from "../BookingWidgets";
 
 export default function SinglePlacePage() {
   const { id } = useParams();
@@ -167,10 +167,8 @@ export default function SinglePlacePage() {
           {place.checkOut} <br />
           Max number of guests: {place.maxGuests}
         </div>
-
-        <div>
-          <BookingWidget place={place} />
-        </div>
+        <BookingWidgets place={place} />
+        <div></div>
       </div>
       <div className="bg-white -mx-8 px-8 py-8 border-t">
         <div>
