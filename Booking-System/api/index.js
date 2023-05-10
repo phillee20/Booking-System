@@ -137,6 +137,7 @@ app.post("/places", (request, response) => {
     checkIn,
     checkOut,
     maxGuests,
+    price,
   } = request.body;
   jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
     if (error) throw error;
@@ -151,6 +152,7 @@ app.post("/places", (request, response) => {
       checkIn,
       checkOut,
       maxGuests,
+      price,
     });
     //console.log(placeInfo);
     response.json(placeInfo);
@@ -158,7 +160,7 @@ app.post("/places", (request, response) => {
 });
 
 //Get all the saved places to show in My Accomodation page
-app.get("/places", (request, response) => {
+app.get("/user-places", (request, response) => {
   const { token } = request.cookies;
   jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
     const { id } = tokenData;
@@ -166,7 +168,7 @@ app.get("/places", (request, response) => {
   });
 });
 
-//Get each place id
+//Get a single place by ID
 app.get("/places/:id", async (request, response) => {
   const { id } = request.params;
   response.json(await Place.findById(id));
@@ -186,11 +188,13 @@ app.put("/places", async (request, response) => {
     checkIn,
     checkOut,
     maxGuests,
+    price,
   } = request.body;
 
   jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
     const placeDoc = await Place.findById(id);
     if (tokenData.id === placeDoc.owner.toString()) {
+      console.log({ price });
       // console.log(tokenData.id)
       // console.log(placeDoc.owner)
       placeDoc.set({
@@ -203,11 +207,17 @@ app.put("/places", async (request, response) => {
         checkIn,
         checkOut,
         maxGuests,
+        price,
       });
       await placeDoc.save();
       response.json("ok");
     }
   });
+});
+
+//Get all listings display on home page
+app.get("/places", async (request, response) => {
+  response.json(await Place.find());
 });
 
 app.listen(4000);
