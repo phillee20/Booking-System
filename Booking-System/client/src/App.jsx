@@ -9,6 +9,7 @@ import Layout from "./Layout";
 import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 import ProfilePage from "./pages/ProfilePage";
+import SinglePlacePage from "./pages/SinglePlacePage";
 
 //The URL below should match Network>Headers>SetCookie if setting cookie(Removes the exclamation mark)
 axios.defaults.baseURL = "http://localhost:4000"; //Acts as base for all axios requests
@@ -27,6 +28,7 @@ function App() {
           <Route path="/account/places" element={<PlacesPage />} />
           <Route path="/account/places/new" element={<PlacesFormPage />} />
           <Route path="/account/places/:id" element={<PlacesFormPage />} />
+          <Route path="/place/:id" element={<SinglePlacePage />} />
         </Route>
       </Routes>
     </UserContextProvider>
