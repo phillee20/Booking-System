@@ -57,6 +57,12 @@ export default function BookingWidget({ place }) {
               value={name}
               onChange={(event) => setName(event.target.value)}
             />
+            <label>Phone Number: </label>
+            <input
+              type="tel"
+              value={mobile}
+              onChange={(event) => setMobile(event.target.value)}
+            />
           </div>
         )}
       </div>

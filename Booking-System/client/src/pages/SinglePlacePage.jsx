@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import BookingWidget from "../BookingWidget";
+import BookingWidget from "../Bookingwidget";
 
 export default function SinglePlacePage() {
   const { id } = useParams();
