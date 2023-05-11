@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { differenceInCalendarDays } from "date-fns";
+import axios from "axios";
+import { useContext, useState, useEffect } from "react";
 import { Navigate } from "react-router";
+import { differenceInCalendarDays } from "date-fns";
+import { UserContext } from "./UserContext";
 
 export default function BookingWidget({ place }) {
   const [checkIn, setCheckIn] = useState("");
@@ -9,6 +11,33 @@ export default function BookingWidget({ place }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [redirect, setRedirect] = useState("");
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name);
+    }
+  }, [user]);
+
+  async function bookPlace() {
+    try {
+      const response = await axios.post("/bookings", {
+        checkIn,
+        checkOut,
+        numberOfGuests,
+        name,
+        phone,
+        place: place._id,
+        price: numberOfNights * place.price,
+      });
+
+      const bookingId = response.data._id;
+      //console.log(bookingId);
+      setRedirect(`/account/bookings/${bookingId}`);
+    } catch (error) {
+      alert("Please log in to book");
+    }
+  }
 
   //Get the total number of days end user wants
   let numberOfNights = 0;
@@ -19,24 +48,9 @@ export default function BookingWidget({ place }) {
     );
   }
 
-  async function bookPlace() {
-    await axios.post("/booking", {
-      checkIn,
-      checkOut,
-      numberOfGuests,
-      name,
-      phone,
-      price: numberOfNights * place.price,
-      place: place._id,
-    });
-    const bookingId = response.data._id;
-    setRedirect(`/account/bookings/${bookingId}`);
-  }
-
   if (redirect) {
     return <Navigate to={redirect} />;
   }
-
   return (
     <div className="bg-white shadow p-4 rounded-2xl">
       <div className="text-2xl text-center">
@@ -69,10 +83,9 @@ export default function BookingWidget({ place }) {
             onChange={(event) => setNumberOfGuests(event.target.value)}
           />
         </div>
-      </div>
-      {numberOfNights > 0 && (
         <div className="py-3 px-4 border-t">
           <label>Full name: </label>
+
           <input
             type="text"
             value={name}
@@ -85,12 +98,14 @@ export default function BookingWidget({ place }) {
             onChange={(event) => setPhone(event.target.value)}
           />
         </div>
-      )}
+      </div>
 
       <button onClick={bookPlace} className="primary mt-4">
         Book this place
       </button>
-      {numberOfNights > 0 && <span>£{numberOfNights * place.price}</span>}
+      {numberOfNights > 0 && (
+        <span>Total = £{numberOfNights * place.price}</span>
+      )}
     </div>
   );
 }

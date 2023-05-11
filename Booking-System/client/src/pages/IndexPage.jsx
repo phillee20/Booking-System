@@ -15,7 +15,7 @@ export default function IndexPage() {
     <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {places.length > 0 && //List of saved places mapped from here
         places.map((place) => (
-          <Link to={"/place/" + place._id}>
+          <Link key={place._id} to={"/place/" + place._id}>
             <div className="bg-gray-500 rounded-2xl flex mb-2">
               {place.photos?.[0] && (
                 <img

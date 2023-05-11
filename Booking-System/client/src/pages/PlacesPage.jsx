@@ -3,6 +3,7 @@ import AccountNav from "../AccountNav";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import PlaceImages from "../PlaceImages";
 
 export default function PlacesPage() {
   const [places, setPlaces] = useState([]);
@@ -49,13 +50,7 @@ export default function PlacesPage() {
               className="mb-8 flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl"
             >
               <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
-                {place.photos.length > 0 && (
-                  <img
-                    className="object-cover"
-                    src={"http://localhost:4000/uploads/" + place.photos[0]}
-                    alt=""
-                  />
-                )}
+                <PlaceImages place={place} />
               </div>
               <div className="grow-0 shrink">
                 <h2 className="text-xl">{place.title}</h2>

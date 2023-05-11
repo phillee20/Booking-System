@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import BookingWidgets from "../BookingWidgets";
+import PlaceGallery from "../PlaceGallery";
 
 export default function SinglePlacePage() {
   const { id } = useParams();
@@ -92,68 +93,7 @@ export default function SinglePlacePage() {
         </svg>
         {place.address}
       </a>
-      <div className="relative">
-        <div className="grid gap-2 grid-cols-[2fr_1fr] rounded-2xl overflow-hidden">
-          <div>
-            {place.photos?.[0] && (
-              <div>
-                <img
-                  onClick={() => {
-                    setShowAllPhotos(true);
-                  }}
-                  className="aspect-square object-cover cursor-pointer"
-                  src={"http://localhost:4000/uploads/" + place.photos?.[0]}
-                  alt="No Image Available"
-                />
-              </div>
-            )}
-          </div>
-          <div className="grid">
-            {place.photos?.[1] && (
-              <img
-                onClick={() => {
-                  setShowAllPhotos(true);
-                }}
-                className="aspect-square object-cover cursor-pointer"
-                src={"http://localhost:4000/uploads/" + place.photos?.[1]}
-                alt="No Image Available"
-              />
-            )}
-            <div className="overflow-hidden">
-              {place.photos?.[2] && (
-                <img
-                  onClick={() => {
-                    setShowAllPhotos(true);
-                  }}
-                  className="aspect-square object-cover relative top-2 cursor-pointer"
-                  src={"http://localhost:4000/uploads/" + place.photos?.[2]}
-                  alt="No Image Available"
-                />
-              )}
-            </div>
-          </div>
-        </div>
-        <button
-          onClick={() => setShowAllPhotos(true)}
-          className="flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-2xl shadow shadow-md shadow-gray-500 cursor-pointer"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          Show more photos
-        </button>
-      </div>
+      <PlaceGallery place={place} />
 
       <div className="mt-8 mb-6 grid gap-8 grid cols-1 md:grid-cols-[2fr_1fr]">
         <div>

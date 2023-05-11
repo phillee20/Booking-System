@@ -1,8 +1,8 @@
 const cors = require("cors");
 const express = require("express");
-const Booking = require("./model/Booking");
 const Place = require("./model/Place");
 const User = require("./model/User");
+const Booking = require("./model/Booking");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
@@ -35,6 +35,21 @@ app.use(
 //Connect MongoDB to your app via below - Put it in env file for best security practice
 //console.log(process.env.MONGO_URL);
 mongoose.connect(process.env.MONGO_URL);
+
+//Used jwt verify a lot so created this function to make it DRY
+function getUserDataFromToken(request) {
+  return new Promise((resolve, reject) => {
+    jwt.verify(
+      request.cookies.token,
+      jwtSecret,
+      {},
+      async (error, tokenData) => {
+        if (error) throw error;
+        resolve(tokenData); //Did not want to return the tokenData back to async function so made new Promise with resolve so the returned data goes to the top function
+      }
+    );
+  });
+}
 
 app.get("/test", (request, response) => {
   response.json("test ok here!");
@@ -222,7 +237,8 @@ app.get("/places", async (request, response) => {
 });
 
 //Take in the below request and created the Schema for mongoDB
-app.post("/booking", (request, response) => {
+app.post("/bookings", async (request, response) => {
+  const tokenData = await getUserDataFromToken(request);
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     request.body;
   Booking.create({
@@ -233,14 +249,19 @@ app.post("/booking", (request, response) => {
     name,
     phone,
     price,
+    user: tokenData.id,
   })
-    .then((error, doc) => {
-      if (error) throw error;
+    .then((doc) => {
       response.json(doc);
     })
     .catch((error) => {
       throw error;
     });
+});
+
+app.get("/bookings", async (request, response) => {
+  const tokenData = await getUserDataFromToken(request);
+  response.json(await Booking.find({ user: tokenData.id }).populate("place"));
 });
 
 app.listen(4000);
