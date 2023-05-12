@@ -6,14 +6,14 @@ AirBeeBee provides the registered and logged in users to list properties for peo
 
 ## Tech Stack
 
-The project is created using MongoDB, Express, React and Node (MERN). 
+The project is created using MongoDB, Express, React and Node (MERN). MongoDB and mongoose is used to store the data/collections provided by the users. For the backend, the endpoints are created using Express, a JavaScript server-side framework that runs within js. Express is a framework that sits on top of NodeJS and helps us to handle requests and responses. On the other hand, the front end is created using React which I have experience in using. Yarn is the package manager for Node. js that is also used within this project.
 
 
 ## Features
 
-The Groove Game API currently contains these features:
+The AirBeeBee contains these features:
 
-- Users can sign-up and log-in. (password encrypted with bcrypt).
+- 
 - Users can request 20 songs by genre from the Spotify API.
 - Users can update their account.
 - Users can delete their account.
