@@ -1,0 +1,182 @@
+[{
+  "_id": {
+    "$oid": "645aac77e740eb4e7a4476fc"
+  },
+  "owner": {
+    "$oid": "6449068e04c32eeb7b890b22"
+  },
+  "title": "Centre place Graslin",
+  "address": "Nantes, Pays de la Loire, France",
+  "photos": [
+    "113ca5f191af37a8de0e38284b8b4412.webp",
+    "e6ae1b8a1e4956755b054653c3f0edb7.webp",
+    "4faa132719883e7a503cf9f6e9f57cc2.webp",
+    "22c98507a3167f418ed9dee8a61ecaa7.webp",
+    "4f572678999e1c12110bdbdeac3db6c4.webp",
+    "0b5745a12ee17f7fa43f1162787c96fc.webp",
+    "cba29b40de0041d6b4ff5ecf09bb2f8b.webp"
+  ],
+  "description": "Enjoy an elegant 20 m2 private room in a renovated 160 m2 apartment in the heart of Nantes city center in the Graslin district.\nThe charm of the old renovated: ceiling height of 3.60m, period parquet, black marble fireplace, comfortable shower room.",
+  "perks": [
+    "tv",
+    "wifi",
+    "radio",
+    "entrance"
+  ],
+  "extraInfo": "The room is equipped with a queensize bed 160cm x 200cm.\nThe room is non-smoking.\nBed linen and towels are provided and washed at 60°.\nWe love animals, but we are complete on this level: we already have 2 adorable cats. We will not be able to welcome more.\nNo parties or visits to the apartment from outside people.",
+  "checkIn": 14,
+  "checkOut": 11,
+  "maxGuests": 2,
+  "price": 100,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645aad10e740eb4e7a447700"
+  },
+  "owner": {
+    "$oid": "6449068e04c32eeb7b890b22"
+  },
+  "title": "Cliffside Bamboo Treehouse",
+  "address": "Klungkung, Bali, Indonesia",
+  "photos": [
+    "e475f8d40cd09f3ed262c08c49c7b908.webp",
+    "3c84c8fd5660d009752960b12899000c.webp",
+    "1206f7a9137fa0b4f59009698dc9adc6.webp",
+    "e10eff18518faec5892624202e7ea109.webp",
+    "41bd30296e5453fba3b1f3ec47a764a9.webp",
+    "f2f5cb1eed7f1dc21857f62b26cedad3.webp"
+  ],
+  "description": "Experience Bali from a birds-eye view in The Avana Treehouse Bamboo Villa. This once-in-a-lifetime bamboo villa experience sits 15 meters high amongst the clove trees on a cliff’s edge. Enjoying the view from any of the 3-story areas will leave you relaxed and with the sensation you are floating in the air.",
+  "perks": [
+    "wifi",
+    "tv",
+    "entrance",
+    "parking",
+    "radio"
+  ],
+  "extraInfo": "\nThe Avana Treehouse is surrounded by nature, with an open design. From time to time, nature's residents (insects, bugs, frogs, lizards, etc.) may visit you at the villa. We keep everything clean, however, avoiding nature's residents during your stay cannot be avoided. Not leaving any leftover food and turning all the lights off at night will help deter them. If you are sensitive to this normal part of the experience here, we recommend you find more suitable lodging during your time in Bali.",
+  "checkIn": 12,
+  "checkOut": 1,
+  "maxGuests": 3,
+  "price": 270,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645aad9ae740eb4e7a447704"
+  },
+  "owner": {
+    "$oid": "6449068e04c32eeb7b890b22"
+  },
+  "title": "Spacious Water Villa with Private Pool",
+  "address": "North Male Atoll, Maldives",
+  "photos": [
+    "2dc4eec95cd46b1bce68fa0516ecb06b.webp",
+    "48b639ff9c4f40cc8490d48d1ebee04a.webp",
+    "55a4134fbfabb590754e80dd2442e97d.webp",
+    "872448aa2954722594fbacec2f25b78b.webp",
+    "df95dca38aef237432ec6a895e160cae.webp",
+    "68f1df8ff6063661daa259172e44c981.webp",
+    "ed7daf033b32e43493a3d3d960d43b5a.webp"
+  ],
+  "description": "At the villa you're a world away from the grip of the city, you are in your spiritual home.The rhythm of life here is serene.\n\n\n> Entire Water villa on stilt in private island\n> Private Pool\n> 45 minutes speedboat ride,\n> A number of Excursions & activities available\n> One kid stay free\n> Maximum 2adults 2 kids\n> 109 SQM\n> Split stay in different types of villa possible\n\n\nKindly, ping me before sending reservation request to arrange transportation to & from Male International Airport",
+  "perks": [
+    "wifi"
+  ],
+  "extraInfo": "Other things to note\nClients need to book a mandatory speedboat to reach the resort",
+  "checkIn": 12,
+  "checkOut": 10,
+  "maxGuests": 2,
+  "price": 450,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645aae46e740eb4e7a447714"
+  },
+  "owner": {
+    "$oid": "6449068e04c32eeb7b890b22"
+  },
+  "title": "Romance 💖 Stargazing ✨Hot tub & sauna! 🥰",
+  "address": "Barripper, England, United Kingdom",
+  "photos": [
+    "943394557d0a1a6f1de9f34d0f566f81.webp",
+    "e6add8b2d58ebf9afc095accd946bc16.webp",
+    "2805cae44c5fc5fe977310688b3a6cdf.webp",
+    "3b51530ab3dc59a467c532b7797e8a28.webp",
+    "f3ed46bce4ea82f1b7ec8fa242d17b30.webp",
+    "e5cffa41606b2a6562fbf9ac7d6fc6cb.webp",
+    "b0900adb0dffd94c1a55dfa1f24ecd97.webp",
+    "6e32590698e26eb83237e6aa23ae06e5.webp"
+  ],
+  "description": "Starlight’ offers guests a luxury stay underneath the stars like no other. Hidden away amongst the trees, Starlight is an enchanting glass-dome hideaway that’s sure to amaze. Whether it be for a romantic retreat, a special occasion or an inspired staycation, Starlight will provide a magical experience that will live long in the memory - search treetopnights\n",
+  "perks": [
+    "radio",
+    "parking",
+    "entrance",
+    "pets"
+  ],
+  "extraInfo": "The hot tub is situated in a second dome, within the surrounds of Starlight at approx 20m distance, and is fully enclosed and private/exclusive to Starlight guests. Two waffle robes and crocks/flip flops are provided.\n\nA Continental style breakfast is provided for the first morning of your stay.",
+  "checkIn": 10,
+  "checkOut": 12,
+  "maxGuests": 4,
+  "price": 550,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645aaeb3e740eb4e7a447718"
+  },
+  "owner": {
+    "$oid": "6449068e04c32eeb7b890b22"
+  },
+  "title": "Marina Bay Sands(MBS) Hotel Singapore Offer",
+  "address": "Singapore, Singapore",
+  "photos": [
+    "ed920fdd173d085e4b95f261c3f4eb1c.webp",
+    "0056e64eb2ac9e41030addf29b3bd26b.webp",
+    "e18990690ef2c95d52fa7c763f8ebbd1.webp",
+    "f46b4aad3f2a303a7ca8bf346838d49d.webp"
+  ],
+  "description": "Indulge in the best experiences at Singapore’s most iconic hotel – home to the world’s largest Infinity Pool. Lounge in your luxurious room and soak in unparalleled views of the city, or explore the integrated resort’s attractions, restaurants and shops.\n",
+  "perks": [
+    "wifi",
+    "entrance"
+  ],
+  "extraInfo": "The link price for deluxe room random floor\nDeluxe room without bathtub Is stand shower\nPremier room , club room , grand club room, orchid suites, bay suites, sands suites, all room type available. Different room type different price. Pls pm for different room type then we can check price for you.\n\nIf call room dining or infinity poolside orders or restaurant eating or shopping or any other consumption need pay by yourself",
+  "checkIn": 11,
+  "checkOut": 11,
+  "maxGuests": 2,
+  "price": 333,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645aaf3de740eb4e7a44771c"
+  },
+  "owner": {
+    "$oid": "6449068e04c32eeb7b890b22"
+  },
+  "title": "Glass cottage with Hot tub \"Blár\"",
+  "address": "Hella, Iceland",
+  "photos": [
+    "83c92f32614398295496463a0523f4b6.webp",
+    "c94d234047a1c335fd3a8ea4d76a27b1.webp",
+    "92ebb2826118ae7f717206b2dda5bb84.webp",
+    "7859490e604f0ef4456e32871cd1d9ef.webp",
+    "c948800dc7aabfe310b3fb9d20506f4a.webp",
+    "79e8f2c20317e0eee6a07bdbbfce4029.webp",
+    "5b413b43d0943aca67c72fb72bdd5902.webp",
+    "56264e616d36976f63f3eedd603f7d93.webp",
+    "78d9d5d7a7e992cc21fe96c2648c99df.webp",
+    "a1a74a32cf1222e890e9e2f664378ad7.webp"
+  ],
+  "description": "Welcome to Glass cottages Iceland.\n\nWe are located on a lava desert in the south of Iceland. 5 minutes from the small town of Hella, close to all the popular attractions that southern Iceland has to offer, but also in a secret and secluded location.\n",
+  "perks": [
+    "tv",
+    "radio",
+    "entrance"
+  ],
+  "extraInfo": "The space\nThe experience we offer is unique. The bedroom is entirely made of glass, You can sleep under the stars in comfort and warmth. The bathroom offers views of the largest Icelandic volcanoes, Hekla, eyjafjallajökull, bláfjöll, tindfjöll…\n\nThere is a fully equipped kitchen with luxury dishes and appliances. Oven, Fridge, induction hob, espresso machine, kettle, toaster.\nAnd also a private hot tub and a terrace.",
+  "checkIn": 11,
+  "checkOut": 12,
+  "maxGuests": 2,
+  "price": 780,
+  "__v": 0
+}]

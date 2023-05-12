@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "645cd2581bef7b5882fa97e0"
+  },
+  "place": {
+    "$oid": "645aaf3de740eb4e7a44771c"
+  },
+  "user": {
+    "$oid": "6449068e04c32eeb7b890b22"
+  },
+  "checkIn": {
+    "$date": "2023-05-17T00:00:00.000Z"
+  },
+  "checkOut": {
+    "$date": "2023-05-19T00:00:00.000Z"
+  },
+  "name": "philip",
+  "phone": "07748144455",
+  "price": 1560,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645cd4e91bef7b5882fa97ff"
+  },
+  "place": {
+    "$oid": "645aac77e740eb4e7a4476fc"
+  },
+  "user": {
+    "$oid": "645cd4011bef7b5882fa97f2"
+  },
+  "checkIn": {
+    "$date": "2023-05-31T00:00:00.000Z"
+  },
+  "checkOut": {
+    "$date": "2023-06-02T00:00:00.000Z"
+  },
+  "name": "phil",
+  "phone": "07748144",
+  "price": 200,
+  "__v": 0
+}]

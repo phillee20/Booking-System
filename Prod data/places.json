@@ -1,0 +1,183 @@
+[{
+  "_id": {
+    "$oid": "645e4ee92e1c572c8da4a1d9"
+  },
+  "owner": {
+    "$oid": "645e4e032e1c572c8da4a1ce"
+  },
+  "title": "Centre place Graslin - Private room La Cambronne",
+  "address": "Nantes, Pays de la Loire, France",
+  "photos": [
+    "5af3ee01a9d80368f30907e61b2ca9c0.webp",
+    "d27ca6e429b7f280bf3b91a68df38adb.webp",
+    "10e32f2855b0fe39c0279884a06af180.webp",
+    "756bf678f60e6b735406ce08272dccfc.webp",
+    "b00f348cffa3494ad70d057e6f1beb2e.webp",
+    "383b3db72acb32f16ff2cbcd4862a8e9.webp",
+    "7fd41fb077e688f20bb73ce6fa8a511b.webp"
+  ],
+  "description": "Enjoy an elegant private room of 20 m2 in a renovated apartment of 160 m2 in the heart of the city center of Nantes in the Graslin district.\nThe charm of the old renovated: ceiling height of 3.60 m, period parquet, black marble fireplace, comfortable bathroom.",
+  "perks": [
+    "wifi",
+    "parking",
+    "tv",
+    "radio"
+  ],
+  "extraInfo": "The room is equipped with a queensize bed 160cm x 200cm.\nThe room is non-smoking.\nBed linen and towels are provided and washed at 60°.\nWe love animals, but we are complete on this level: we already have 2 adorable cats. We will not be able to welcome more.\nNo parties or visits to the apartment from outside people.",
+  "checkIn": 11,
+  "checkOut": 12,
+  "maxGuests": 1,
+  "price": 223,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645e4f452e1c572c8da4a1dd"
+  },
+  "owner": {
+    "$oid": "645e4e032e1c572c8da4a1ce"
+  },
+  "title": "645e4f452e1c572c8da4a1dd",
+  "address": "Kecamatan Ubud, Bali, Indonesia",
+  "photos": [
+    "f017796869e58067d8897fc3e9b89165.webp",
+    "82ae3838483d148b8de5d23ae73d76c1.webp",
+    "81162172bd9118f3116733043cc03450.webp",
+    "2a02f10af21e07de4116013958a7d0d6.webp",
+    "be501364840c45a921115146e831ebf1.webp",
+    "2e111c76023044eb178f03bc0f100dc5.webp"
+  ],
+  "description": "A beautiful and cozy space located right in the heart of Ubud, near the Monkey Forest, in the peaceful area of Nyuh Kuning with easy access to the centre within walking distance.\n\nThe villa is off the main road down a quiet side street, just a 5 minute walk from many delicious restaurants, cafes and co-working spaces. The villa has the fastest speed wifi available in Bali, ideal for digital nomads.\n\nYour hosts love sharing their local knowledge and look forward to welcoming you into their home.",
+  "perks": [
+    "wifi",
+    "radio",
+    "pets",
+    "entrance"
+  ],
+  "extraInfo": "Studio is located on a quiet cul-de-sac behind Bank mandiri. Very safe and quiet.\nIncluding WiFi, listrik and 3x weekly cleaning.\nThere is full-size bathroom and a mezzanine floor bedroom with a lounge area under the stairs. The kitchen has an induction cooktop with pans supplied. All kitchen ware is supplied ready to move in. There is a private garden area with table, chairs and umbrella next to a fishpond with waterfall feature. Gym area is also available for use.",
+  "checkIn": 12,
+  "checkOut": 11,
+  "maxGuests": 1,
+  "price": 100,
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "645e4fa52e1c572c8da4a1e1"
+  },
+  "owner": {
+    "$oid": "645e4e032e1c572c8da4a1ce"
+  },
+  "title": "Explore nature at this full private island",
+  "address": "Kolamaafushi, Gaafu Alif Atoll, Maldives",
+  "photos": [
+    "adf1538ea7efb67ad190f1878612c3e7.webp",
+    "71a953dbdd2e67d5ac8c3f89ad0825cc.webp",
+    "ca15bc20c3aa1343d85cc53bb45670ff.webp",
+    "6dad8234f7dc2105ff5260449b5ec8fa.webp",
+    "01a143207be6637c0a0b9ddcb4cf6eca.webp",
+    "f6e0b986737ba3d3a635656a958712c1.webp"
+  ],
+  "description": "This is a unique and secluded experience that allows you to escape the hustle and bustle of everyday life and fully immerse yourself in nature. You'll have the island to yourself and can enjoy the beautiful scenery, crystal clear waters, and an abundance of wildlife. You'll be able to set up your tent on the sandy beaches or in a secluded spot in the woods.\n\nThe whole island is yours and yours alone! Full privacy to experience nature.\nNo noisy neighbors, you are in a large island where you can enjoy the sounds of nature, experience life of blue lagoon.",
+  "perks": [
+    "wifi",
+    "tv",
+    "radio"
+  ],
+  "extraInfo": "Other things to note\nPlease bring your own food, and paper towels,\nFood also can be arranged to be delivered to island wish extra charge.\nWe will collect trash when requested.\n",
+  "checkIn": 11,
+  "checkOut": 11,
+  "maxGuests": 1,
+  "price": 450,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645e4feb2e1c572c8da4a1e5"
+  },
+  "owner": {
+    "$oid": "645e4e032e1c572c8da4a1ce"
+  },
+  "title": "Chygwyn - quaint one bedroom chalet",
+  "address": "Helston, United Kingdom",
+  "photos": [
+    "337f8ba5443600bf23b0ff40af38dcef.webp",
+    "3860266bd6683493a695228351c6b516.webp",
+    "2b9324d433d314ad79aaa94329bcdd31.webp",
+    "79f642a97617701a4fd00d7c6f9a382c.webp",
+    "d046d3266ff2bf90defabd6a326059f8.webp",
+    "49f8a1df0b71fe3b1bf78548b2dc5973.webp",
+    "fe4981dfaa8309103594a0d7c5f259eb.webp",
+    "a0fe3a09e5f17f7e2b872dfae97dee60.webp"
+  ],
+  "description": "Chygwyn is situated in an area of outstanding natural beauty just a few miles from Kynance Cove and Lizard point. The chalet is light and airy catering for all your requirements. A well equipped kitchen (210cm x 132cm), comfortable living room (400cm x 260 cm), shower room (134cm x 134 cm) and a cosy double bedroom (256cm x (190cm).",
+  "perks": [
+    "wifi",
+    "tv",
+    "radio",
+    "pets"
+  ],
+  "extraInfo": "Guest access\nAllocated parking space\nInternet and Wi-fi\nShared communal garden\nOther things to note\nBeautiful beaches can be found just a short drive away such a mystical Kynance Cove, Church Cove, Kennack Sands, Cadgwith Cove and Coverack.",
+  "checkIn": 12,
+  "checkOut": 11,
+  "maxGuests": 3,
+  "price": 230,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645e503b2e1c572c8da4a1e9"
+  },
+  "owner": {
+    "$oid": "645e4e032e1c572c8da4a1ce"
+  },
+  "title": "Cosy cottage near Borgarnes Iceland",
+  "address": "Borgarnes, Borgarbyggð, Iceland",
+  "photos": [
+    "9ecbbefad5a42e5fffbd2adf2be9e049.webp",
+    "c8ea8fe64b2758760674137daa4f1a9d.webp",
+    "29df850589cb0de2ed7d6be5a1e2d9ab.webp",
+    "887dd0ac88317c8bda5acb56bc3fbc6a.webp",
+    "196aa6af8e1aaae709d9f143f47d6df3.webp",
+    "3fa28cc944fb5ceaff8e7c24dc19e9e7.webp",
+    "1bffb6dd31d8ebb78dcbc82c1aa45d25.webp",
+    "599b5dbd97261a9e650cb0d9be85dd87.webp",
+    "fde4cadb15081ea230684eab6d852f20.webp"
+  ],
+  "description": "Cosy family cottage with an amazing view over Norðurá and Eiríksjökull. Newly renovated. Wooden deck around the whole cottage. Private road and parking.",
+  "perks": [
+    "wifi",
+    "tv",
+    "radio"
+  ],
+  "extraInfo": "Cozy cottage in the nature in the center of West Iceland",
+  "checkIn": 11,
+  "checkOut": 12,
+  "maxGuests": 4,
+  "price": 270,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645e50e12e1c572c8da4a1ff"
+  },
+  "owner": {
+    "$oid": "645e4e032e1c572c8da4a1ce"
+  },
+  "title": "The Loggia",
+  "address": "Pontone, Campania, Italy",
+  "photos": [
+    "68e55d61b4d36e4310a35a97f6bd9985.webp",
+    "180ee023e7e97affcc74bc6a449fea11.webp",
+    "c094cee6559929c6989a7e0d4ab32efb.webp",
+    "5fa2a7734bcab4077d5f6049fe1f7708.webp",
+    "487c48c9673a85a2de245592e376cc4b.webp"
+  ],
+  "description": "LaLoggia is located 100 meters from the center of the beautiful Borgo di Pontone, far (but not too much) from the famous Ravello at 3 km and Amalfi at 5 km away, also reachable on foot, descending 1000 steps or by bus stop 50 meters away. The newly renovated apartment is very cozy and consists of a bedroom with a French bed, terrace with beautiful view on the sea and the Lattari Mountains, bathroom and kitchen. In the village there are 2 restaurants and a bar with tables in the square and minimarket.",
+  "perks": [
+    "wifi",
+    "tv",
+    "radio"
+  ],
+  "extraInfo": "Guests are required to pay the tourist tax in cash (1.50 per person per night).\nFor those who come by car, there is a parking space near the apartment for 15 euros per night.",
+  "checkIn": 11,
+  "checkOut": 11,
+  "maxGuests": 2,
+  "price": 320,
+  "__v": 0
+}]
