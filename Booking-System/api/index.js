@@ -34,7 +34,7 @@ app.use(
 
 //Connect MongoDB to your app via below - Put it in env file for best security practice
 //console.log(process.env.MONGO_URL);
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL_PROD);
 
 //Used jwt verify a lot so created this function to make it DRY
 function getUserDataFromToken(request) {
@@ -99,6 +99,7 @@ app.get("/profile", (request, response) => {
     jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
       if (error) throw error;
       const { name, email, id } = await User.findById(tokenData.id);
+      //const { name, email, id } = await User.findById(tokenData.id);
       response.json({ name, email, id });
     });
   } else {
