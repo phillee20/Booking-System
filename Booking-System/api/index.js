@@ -122,11 +122,9 @@ app.post("/upload-by-link", async (request, response) => {
   response.json(newName);
 });
 
-const photosMiddleware = multer({ dest: "uploads/" });
+//const photosMiddleware = multer({ dest: "uploads/" });
 app.post(
-  "/upload",
-  photosMiddleware.array("photos", 100),
-  (request, response) => {
+  "/upload", (request, response) => {
     const uploadedFiles = [];
     for (let i = 0; i < request.files.length; i++) {
       const { path, originalname } = request.files[i];
