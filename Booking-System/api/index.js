@@ -9,13 +9,16 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const imageDownloader = require("image-downloader");
 const multer = require("multer");
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 require("dotenv").config();
 const fs = require("fs");
+const mime = require("mime-types");
 
 const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "dfeeflnedfdmfejhvklfmdsfff";
+const bucket = "phil-airbeebee";
 
 //parses the json -  This solves the JSON error in console log
 app.use(express.json());
@@ -34,7 +37,35 @@ app.use(
 
 //Connect MongoDB to your app via below - Put it in env file for best security practice
 //console.log(process.env.MONGO_URL);
-mongoose.connect(process.env.MONGO_URL_PROD);
+//Then added this connection string to every end points instead for AWSs3
+//mongoose.connect(process.env.MONGO_URL_PROD);
+
+
+
+async function uploadToS3(path, originalFilename, mimetype) {
+  const client = new S3Client({
+    region: "us-east-1",
+    credentials: {
+      accessKeyId: process.env.S3_ACCESS_KEY,
+      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+    },
+  });
+  const parts = originalFilename.split(".");
+  const ext = parts[parts.length - 1];
+
+  const newFilename = Date.now() + "." + ext;
+
+  await client.send(
+    new PutObjectCommand({
+      Bucket: bucket,
+      Body: fs.readFileSync(path),
+      Key: newFilename,
+      ContentType: mimetype,
+      ACL: "public-read",
+    })
+  );
+  return `https://${bucket}.s3.amazonaws.com/${newFilename}`;
+}
 
 //Used jwt verify a lot so created this function to make it DRY
 function getUserDataFromToken(request) {
@@ -52,10 +83,12 @@ function getUserDataFromToken(request) {
 }
 
 app.get("/test", (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   response.json("test ok here!");
 });
 
 app.post("/register", async (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const { name, email, password } = request.body;
   try {
     const userCred = await User.create({
@@ -70,6 +103,7 @@ app.post("/register", async (request, response) => {
 });
 
 app.post("/login", async (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const { email, password } = request.body;
   const userCred = await User.findOne({ email });
 
@@ -94,6 +128,7 @@ app.post("/login", async (request, response) => {
 });
 
 app.get("/profile", (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const { token } = request.cookies;
   if (token) {
     jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
@@ -111,36 +146,42 @@ app.post("/logout", (request, response) => {
   response.cookie("token", "").json(true);
 });
 
+//URL Link post reqeust for images
 //console.log({ __dirname });
 app.post("/upload-by-link", async (request, response) => {
   const { link } = request.body;
   const newName = "photo" + Date.now() + ".jpg";
   await imageDownloader.image({
     url: link,
-    dest: __dirname + "/uploads/" + newName,
+    dest: "/tmp/" + newName,
+    //dest: __dirname + "/uploads/" + newName, Not to uploads folder anymore
   });
-  response.json(newName);
+  const url = await uploadToS3(
+    "/tmp/" + newName,
+    newName,
+    mime.lookup()("/tmp/" + newName)
+  );
+  response.json(url);
 });
 
-//const photosMiddleware = multer({ dest: "uploads/" });
+const photosMiddleware = multer({ dest: "/tmp" });
 app.post(
-  "/upload", (request, response) => {
+  "/upload",
+  photosMiddleware.array("photos", 100),
+  async (request, response) => {
     const uploadedFiles = [];
     for (let i = 0; i < request.files.length; i++) {
-      const { path, originalname } = request.files[i];
-      const parts = originalname.split(".");
-      const ext = parts[parts.length - 1];
-      const newPath = path + "." + ext;
-      fs.renameSync(path, newPath);
-      uploadedFiles.push(newPath.replace("uploads/", ""));
+      const { path, originalname, mimetype } = request.files[i];
+      const url = await uploadToS3(path, originalname, mimetype);
+      uploadedFiles.push(url);
     }
-
     response.json(uploadedFiles);
   }
 );
 
 //Post a new place and create it with MongoDB place Schema
 app.post("/places", (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const { token } = request.cookies;
   const {
     title,
@@ -176,6 +217,7 @@ app.post("/places", (request, response) => {
 
 //Get all the saved places to show in My Accomodation page
 app.get("/user-places", (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const { token } = request.cookies;
   jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
     const { id } = tokenData;
@@ -185,12 +227,14 @@ app.get("/user-places", (request, response) => {
 
 //Get a single place by ID
 app.get("/places/:id", async (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const { id } = request.params;
   response.json(await Place.findById(id));
 });
 
 //Update Saved location information
 app.put("/places", async (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const { token } = request.cookies;
   const {
     id,
@@ -207,6 +251,7 @@ app.put("/places", async (request, response) => {
   } = request.body;
 
   jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
+    mongoose.connect(process.env.MONGO_URL_PROD);
     const placeDoc = await Place.findById(id);
     if (tokenData.id === placeDoc.owner.toString()) {
       console.log({ price });
@@ -232,11 +277,13 @@ app.put("/places", async (request, response) => {
 
 //Get all listings display on home page
 app.get("/places", async (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   response.json(await Place.find());
 });
 
 //Take in the below request and created the Schema for mongoDB
 app.post("/bookings", async (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const tokenData = await getUserDataFromToken(request);
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     request.body;
@@ -259,6 +306,7 @@ app.post("/bookings", async (request, response) => {
 });
 
 app.get("/bookings", async (request, response) => {
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const tokenData = await getUserDataFromToken(request);
   response.json(await Booking.find({ user: tokenData.id }).populate("place"));
 });

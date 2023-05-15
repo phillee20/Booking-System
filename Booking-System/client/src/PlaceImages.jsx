@@ -1,3 +1,5 @@
+import Image from "./Image";
+
 export default function PlaceImages({ place, index = 0, className = null }) {
   //if place photos length is falsey then return empty string
   if (!place.photos?.length) {
@@ -7,11 +9,5 @@ export default function PlaceImages({ place, index = 0, className = null }) {
   if (!className) {
     className = "object-cover";
   }
-  return (
-    <img
-      className={className}
-      src={"http://localhost:4000/uploads/" + place.photos[index]}
-      alt=""
-    />
-  );
+  return <Image className={className} src={place.photos[index]} alt="" />;
 }
