@@ -1,3 +1,0 @@
-{
-    "buildCommand": "cd client && yarn install && vite build"
-}
