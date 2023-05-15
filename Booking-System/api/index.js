@@ -30,7 +30,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(
   cors({
     //Set localhost to communicate to the endpoint
-    origin: "http://127.0.0.1:5173",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
@@ -224,7 +224,7 @@ app.get("/api/user-places", (request, response) => {
 });
 
 //Get a single place by ID
-app.get("/places/:id", async (request, response) => {
+app.get("/api/places/:id", async (request, response) => {
   mongoose.connect(process.env.MONGO_URL_PROD);
   const { id } = request.params;
   response.json(await Place.findById(id));
@@ -232,7 +232,7 @@ app.get("/places/:id", async (request, response) => {
 
 //Update Saved location information
 app.put("/api/places", async (request, response) => {
-  mongoose.connect(process.env, MONGO_URL_PROD);
+  mongoose.connect(process.env.MONGO_URL_PROD);
   const { token } = request.cookies;
   const {
     id,
