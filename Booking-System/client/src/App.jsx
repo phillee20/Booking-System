@@ -14,7 +14,7 @@ import BookingsPage from "./pages/BookingsPage";
 import SingleBookingPage from "./pages/SingleBookingPage";
 
 //The URL below should match Network>Headers>SetCookie if setting cookie(Removes the exclamation mark)
-axios.defaults.baseURL = "http://localhost:4000"; //Acts as base for all axios requests
+axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL; //Acts as base for all axios requests
 axios.defaults.withCredentials = true; //Must be enabled for cookie to work!
 
 function App() {
