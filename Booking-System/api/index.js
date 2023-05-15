@@ -232,7 +232,7 @@ app.get("/places/:id", async (request, response) => {
 
 //Update Saved location information
 app.put("/api/places", async (request, response) => {
-  mongoose.connect(process.env.MONGO_URL_PROD);
+  mongoose.connect(process.env, MONGO_URL_PROD);
   const { token } = request.cookies;
   const {
     id,
@@ -249,7 +249,6 @@ app.put("/api/places", async (request, response) => {
   } = request.body;
 
   jwt.verify(token, jwtSecret, {}, async (error, tokenData) => {
-    mongoose.connect(process.env.MONGO_URL_PROD);
     const placeDoc = await Place.findById(id);
     if (tokenData.id === placeDoc.owner.toString()) {
       console.log({ price });
