@@ -24,49 +24,48 @@ The AirBeeBee contains these features:
 
 ## Prerequisites
 
-- Node.js and NPM
-- A Spotify Developer Account
+- Node.js and Yarn
 
 ## Endpoints
 
 ```
-app.post("/api/user-signup", registerUser);
+app.post("/register"
 ```
 
-This endpoint will post users to the database. This request requires a body: {username: **_string_**, name: **_string_**, password: **_string_** (6 character minimum)}.
+This endpoint will post users to the database. This request requires a body: {name: **_string_**, username: **_string_**, password: **_string_**
 
 ```
-app.post("/api/user-login", loginUser);
-
-```
-
-This endpoint will retrieve the user from the database. This request requires a body: {username: **_string_**, password: **_string_**}
-
-```
-app.get("/api/songs/:genre", getSongs);
+app.post("/login"
 
 ```
 
-This request will send users a hardcoded list of 6 genres.
+This endpoint will retrieve the user from the database. This request requires a body: {email: **_string_**, password: **_string_**}
 
 ```
-app.post("/api/submit-games", postGame);
-```
-
-Posts a game object to the database containing information about games played. This request requires a body: {games: { user: **_string_**, songs: { **array** }
-
-```
-app.post("/api/get-games", getGame);
+app.get("/profile"
 
 ```
 
-This requests data from a previously played game. This request requires a body: {username: **_string_**}
+This request will get the users profile find it in database. This request requires a body: {name: **_string_**, email: **_string_**, id: **_string_**}
 
 ```
-app.delete("/api/user", deleteUser);
+app.post("/api/logout"
 ```
 
-This will remove a user from the database. This request requires a body: {username: **_string_**}
+Logs the logged in users out
+
+```
+app.post("/upload-by-link"
+
+```
+
+Uploads the images from user to amazon AWS - S3
+
+```
+app.post("/upload", photosMiddleware.array("photos", 100),
+```
+
+Request will upload photos from users local machine to AWS S3
 
 ```
 app.patch("/api/user", updateUser);
