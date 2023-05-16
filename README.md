@@ -1,22 +1,22 @@
 # AirBeeBee
 
 
-AirBeeBee provides the registered and logged in users to list properties for people to rent. Logged in users will also be able to make bookings for accomodations that other users have rented out, as well as be able to view all the listed places by everyone. 
+AirBeeBee provides the registered and logged in users to list properties for people to rent. Logged in users will also be able to make bookings for accomodations for themselves, as well as be able to view all the listed places by everyone else.
 
 
 ## Tech Stack
 
-The project is created using MongoDB, Express, React and Node (MERN). MongoDB and mongoose is used to store the data/collections provided by the users. For the backend, the endpoints are created using Express, a JavaScript server-side framework that runs within js. Express is a framework that sits on top of NodeJS and helps us to handle requests and responses. On the other hand, the front end is created using React which I have experience in using. Yarn is the package manager for Node. js that is also used within this project.
+The project is created using MongoDB, Express, React and Node (MERN). MongoDB and mongoose is used to store the data/collections provided by the users. For the backend, the endpoints are created using Express, a JavaScript server-side framework that runs within js. Express is a framework that sits on NodeJS and helps us to handle requests and responses. On the other hand, the front end is created using React which I have experience in using. Yarn is the package manager for Node. js that is also used within this project.
 
 
 ## Features
 
 The AirBeeBee contains these features:
 
-- 
-- Users can request 20 songs by genre from the Spotify API.
-- Users can update their account.
-- Users can delete their account.
+- Users can make bookings for places via the booking widget.
+- Users can list places to rent out via the listing places form
+- Users can update the information forthe places they've listed to rent out.
+- Users can log out their profile
 - Users can post their games to the mongoDB database.
 - Users can request data about their previous games.
 - Users can post scores to the mongoDB database.
