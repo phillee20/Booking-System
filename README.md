@@ -24,38 +24,39 @@ The AirBeeBee contains these features:
 
 ## Prerequisites
 
-- Node.js and Yarn
+- Node.js
+- Yarn
 
 ## Endpoints
 
 ```
-app.post("/register"
+app.post("/register")
 ```
 
 This endpoint will post users to the database. This request requires a body: {name: **_string_**, username: **_string_**, password: **_string_**
 
 ```
-app.post("/login"
+app.post("/login")
 
 ```
 
 This endpoint will retrieve the user from the database. This request requires a body: {email: **_string_**, password: **_string_**}
 
 ```
-app.get("/profile"
+app.get("/profile")
 
 ```
 
 This request will get the users profile find it in database. This request requires a body: {name: **_string_**, email: **_string_**, id: **_string_**}
 
 ```
-app.post("/api/logout"
+app.post("/api/logout")
 ```
 
 Logs the logged in users out
 
 ```
-app.post("/upload-by-link"
+app.post("/upload-by-link")
 
 ```
 
@@ -91,17 +92,20 @@ app.put("/places"
 
 PUT request updates saved location information
 
+
 ```
 app.get("/places"
 ```
 
 Get all listings display on home page
 
+
 ```
 app.post("/bookings"
 ```
 
 Take in the below request and created the Schema for mongoDB
+
 
 ```
 app.get("/bookings")
@@ -119,14 +123,14 @@ To run this server on your local machine. Clone the repository:
 git clone https://github.com/yourgithubusername/Booking-System.git
 ```
 
-running `yarn install` will install the necessary packages.
+Running `yarn install` will install the necessary packages.
 <br>
 <br>
 You will need to create an `.env` file in the root directory. Inside of this `.env` file, you will need to create some environment variables:
 
 ```
 
-MONGO_URI="ConnectionStringFromMongoDBURI"
+MONGO_URI="ConnectionStringFromMongoDB-URI"
 
 ```
 
@@ -136,14 +140,15 @@ You will then need to create a mongoDB database and link it to the environment v
 If you wish to run our tests or develop them further, please include a `MONGO_URI_TEST` variable in the .env file and link it to the appropriate mongoDB database.
 <br>
 <br>
+
 Start the server:
 
-cd into BookingSystem/api and run below
+cd into Booking-System/api and run below
 
 ```
 node index.js
 ```
-cd into BookingSystem/client and run below. Copy http://localhost:5173/ into your URL address bar
+cd into Booking-System/client and run below. Copy http://localhost:5173/ into your URL address bar
 ```
 yarn dev
 ```
