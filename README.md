@@ -113,39 +113,20 @@ Gets the bookings information and populates the place
 
 ## Running this on a local machine
 
-To run this server on your local machine, you will need to install our dependencies. The list of dependencies are as follows:
+To run this server on your local machine. Clone the repository:
 
 ```
-
-    axios: ^1.3.4,
-    bcrypt: ^5.1.0,
-    dotenv: ^16.0.3,
-    express: ^4.18.2,
-    mongoose: ^7.0.3
-
-    cross-env: ^7.0.3,
-    eslint: ^8.36.0,
-    husky: ^8.0.3,
-    jest: ^29.5.0,
-    supertest: ^6.3.3
-    node: 14.20.1
-
+git clone https://github.com/yourgithubusername/Booking-System.git
 ```
 
-Clone the repository:
-
-```
-git clone https://github.com/yourusername/groove-game-api.git
-```
-
-running `npm i` will install the necessary packages.
+running `yarn install` will install the necessary packages.
 <br>
 <br>
-You will need to create a `.env` file in the root directory. Inside of this `.env` file, you will need to create some environment variables:
+You will need to create an `.env` file in the root directory. Inside of this `.env` file, you will need to create some environment variables:
 
 ```
 
-MONGO_URI
+MONGO_URI="ConnectionStringFromMongoDBURI"
 
 ```
 
@@ -157,10 +138,14 @@ If you wish to run our tests or develop them further, please include a `MONGO_UR
 <br>
 Start the server:
 
+cd into BookingSystem/api and run below
+
 ```
-node app.js
+node index.js
+```
+cd into BookingSystem/client and run below. Copy http://localhost:5173/ into your URL address bar
+```
+yarn dev
 ```
 
-## Contributing
 
-If you would like to contribute to the Groove Game API, feel free to submit a pull request. We welcome contributions of all kinds, including bug fixes, new features, and improvements to the documentation.
