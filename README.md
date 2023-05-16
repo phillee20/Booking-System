@@ -68,22 +68,48 @@ app.post("/upload", photosMiddleware.array("photos", 100),
 Request will upload photos from users local machine to AWS S3
 
 ```
-app.patch("/api/user", updateUser);
+app.post("/places")
 ```
 
-This will update the user object stored in the database. This request requires a body: {username: **_string_**, name: **_string_** || password: **_string_** }
+Post a new place and create it with Mongoose Schema
 
 ```
-app.post("/api/scores", postScore);
+app.get("/user-places"
 ```
 
-This will post a users score to the scores database. This request requires a body: {username: **_string_**}
+Get all the saved places to show in My Accomodation page
 
 ```
-app.get("/api/scores", getScore);
+app.get("/places/:id")
 ```
 
-This will retrieve all of the (sorted) scores stored in the database.
+Get requests a single place by ID
+
+```
+app.put("/places"
+```
+
+PUT request updates saved location information
+
+```
+app.get("/places"
+```
+
+Get all listings display on home page
+
+```
+app.post("/bookings"
+```
+
+Take in the below request and created the Schema for mongoDB
+
+```
+app.get("/bookings")
+```
+
+Gets the bookings information and populates the place
+
+
 
 ## Running this on a local machine
 
