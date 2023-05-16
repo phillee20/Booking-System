@@ -4,18 +4,19 @@
 AirBeeBee provides the registered and logged in users to list properties for people to rent. Logged in users will also be able to make bookings for accomodations for themselves, as well as be able to view all the listed places by everyone else.
 
 
+
 ## Running this on a local machine
 
 To run this server on your local machine. Clone the repository:
 
 ```
-git clone https://github.com/yourgithubusername/Booking-System.git
+git clone https://github.com/YOUROWNGITHUBUSERNAME/Booking-System.git
 ```
 
 Running `yarn install` will install the necessary packages.
 <br>
 <br>
-You will need to create an `.env` file in the root directory. Inside of this `.env` file, you will need to create some environment variables:
+You will need to create an `.env` file in the /Booking-System/api directory. Inside of this `.env` file, you will need to create an environment variable named MONGO_URI:
 
 ```
 
@@ -23,10 +24,7 @@ MONGO_URI="ConnectionStringFromMongoDB-URI"
 
 ```
 
-You will then need to create a mongoDB database and link it to the environment variables.
-<br>
-<br>
-If you wish to run our tests or develop them further, please include a `MONGO_URI_TEST` variable in the .env file and link it to the appropriate mongoDB database.
+You will then need to create a MongoDB database and link it to the environment variables. Input the connection string to replace the above string. This will act as the database for the system.
 <br>
 <br>
 
@@ -37,11 +35,12 @@ cd into Booking-System/api and run below
 ```
 node index.js
 ```
-cd into Booking-System/client and run below. Copy http://localhost:5173/ into your URL address bar
+cd into Booking-System/client and run below. Copy http://localhost:5173/ which is the result of the below command into your URL address bar. 
 ```
 yarn dev
 ```
 
+You are now connected!
 
 
 
