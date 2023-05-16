@@ -15,12 +15,12 @@ The AirBeeBee contains these features:
 
 - Users can make bookings for places via the booking widget.
 - Users can list places to rent out via the listing places form
-- Users can update the information forthe places they've listed to rent out.
-- Users can log out their profile
-- Users can post their games to the mongoDB database.
-- Users can request data about their previous games.
-- Users can post scores to the mongoDB database.
-- Users can view all scores stored in the mongoDB database.
+- Users can update the information for the places they've listed to rent out.
+- Users can log out their profile.
+- Users can make one of the pictures they've uploaded to become the listing cover.
+- Users can register for a profile.
+- Users can log into the registered profile.
+- Users can can view all the places listed by other users on home page.
 
 ## Prerequisites
 
