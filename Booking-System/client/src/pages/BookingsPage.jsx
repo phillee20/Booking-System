@@ -24,7 +24,7 @@ export default function BookingsPage() {
             <Link
               to={`/account/bookings/${booking._id}`}
               key={booking._id}
-              className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden"
+              className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden mb-6"
             >
               <div className="w-48">
                 <PlaceImages place={booking.place} />

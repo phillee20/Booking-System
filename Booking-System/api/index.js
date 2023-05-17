@@ -279,7 +279,7 @@ app.get("/api/places", async (request, response) => {
 });
 
 //Take in the below request and created the Schema for mongoDB
-app.post("/bookings", async (request, response) => {
+app.post("/api/bookings", async (request, response) => {
   mongoose.connect(process.env.MONGO_URL_PROD);
   const tokenData = await getUserDataFromToken(request);
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =

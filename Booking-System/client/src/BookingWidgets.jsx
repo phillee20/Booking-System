@@ -32,7 +32,6 @@ export default function BookingWidget({ place }) {
       });
 
       const bookingId = response.data._id;
-      //console.log(bookingId);
       setRedirect(`/account/bookings/${bookingId}`);
     } catch (error) {
       alert("Please log in to book");
